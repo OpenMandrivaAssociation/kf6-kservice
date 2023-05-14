@@ -68,12 +68,18 @@ KService allows to query information about installed applications and their asso
 %install
 %ninja_install -C build
 
-%find_lang %{name} --all-name --with-qt --with-html
+# Some translations still use old filenames...
+for i in %{buildroot}%{_mandir}/*/kbuildsycoca5* %{buildroot}%{_mandir}/*/*/kbuildsycoca5*; do
+	mv $i ${i/sycoca5/sycoca6}
+done
+
+%find_lang %{name} --all-name --with-qt --with-html --with-man
 
 %files -f %{name}.lang
 %{_datadir}/qlogging-categories6/kservice.*
 %{_sysconfdir}/xdg/menus/applications.menu
 %{_bindir}/kbuildsycoca6
+%{_mandir}/man8/kbuildsycoca6.8*
 
 %files -n %{devname}
 %{_includedir}/KF6/KService
