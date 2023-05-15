@@ -73,11 +73,13 @@ for i in %{buildroot}%{_mandir}/*/kbuildsycoca5* %{buildroot}%{_mandir}/*/*/kbui
 	mv $i ${i/sycoca5/sycoca6}
 done
 
+# We get this from distro-release (but should sync it at some point)
+rm -f %{buildroot}%{_sysconfdir}/xdg/menus/applications.menu
+
 %find_lang %{name} --all-name --with-qt --with-html --with-man
 
 %files -f %{name}.lang
 %{_datadir}/qlogging-categories6/kservice.*
-%{_sysconfdir}/xdg/menus/applications.menu
 %{_bindir}/kbuildsycoca6
 %{_mandir}/man8/kbuildsycoca6.8*
 
