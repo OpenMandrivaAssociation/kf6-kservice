@@ -1,6 +1,6 @@
 %define libname %mklibname KF6Service
 %define devname %mklibname KF6Service -d
-%define git 20230513
+%define git 20230525
 
 Name: kf6-kservice
 Version: 5.240.0
@@ -67,12 +67,6 @@ KService allows to query information about installed applications and their asso
 
 %install
 %ninja_install -C build
-
-# Some translations still use old filenames...
-for i in %{buildroot}%{_mandir}/*/kbuildsycoca5* %{buildroot}%{_mandir}/*/*/kbuildsycoca5*; do
-	mv $i ${i/sycoca5/sycoca6}
-done
-
 %find_lang %{name} --all-name --with-qt --with-html --with-man
 
 %files -f %{name}.lang
