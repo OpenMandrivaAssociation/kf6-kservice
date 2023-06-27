@@ -1,6 +1,6 @@
 %define libname %mklibname KF6Service
 %define devname %mklibname KF6Service -d
-%define git 20230622
+%define git 20230627
 
 Name: kf6-kservice
 Version: 5.240.0
