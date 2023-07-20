@@ -4,7 +4,7 @@
 
 Name: kf6-kservice
 Version: 5.240.0
-Release: %{?git:0.%{git}.}2
+Release: %{?git:0.%{git}.}3
 Source0: https://invent.kde.org/frameworks/kservice/-/archive/master/kservice-master.tar.bz2#/kservice-%{git}.tar.bz2
 Summary: KService allows to query information about installed applications and their associated file types
 URL: https://invent.kde.org/frameworks/kservice
@@ -32,6 +32,7 @@ BuildRequires: cmake(KF6CoreAddons)
 BuildRequires: cmake(KF6I18n)
 BuildRequires: cmake(KF6DocTools)
 BuildRequires: plasma6-xdg-desktop-portal-kde
+Requires: distro-release-desktop
 Requires: %{libname} = %{EVRD}
 
 %description
@@ -70,8 +71,10 @@ KService allows to query information about installed applications and their asso
 %ninja_install -C build
 %find_lang %{name} --all-name --with-qt --with-html --with-man
 
+# We get this from distro-release-desktop
+rm %{buildroot}%{_sysconfdir}/xdg/menus/applications.menu
+
 %files -f %{name}.lang
-%{_sysconfdir}/xdg/menus/applications.menu
 %{_datadir}/qlogging-categories6/kservice.*
 %{_bindir}/kbuildsycoca6
 %{_mandir}/man8/kbuildsycoca6.8*
