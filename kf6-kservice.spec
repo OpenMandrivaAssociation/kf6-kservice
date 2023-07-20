@@ -4,7 +4,7 @@
 
 Name: kf6-kservice
 Version: 5.240.0
-Release: %{?git:0.%{git}.}1
+Release: %{?git:0.%{git}.}2
 Source0: https://invent.kde.org/frameworks/kservice/-/archive/master/kservice-master.tar.bz2#/kservice-%{git}.tar.bz2
 Summary: KService allows to query information about installed applications and their associated file types
 URL: https://invent.kde.org/frameworks/kservice
