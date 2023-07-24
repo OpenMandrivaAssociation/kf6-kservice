@@ -4,7 +4,7 @@
 
 Name: kf6-kservice
 Version: 5.240.0
-Release: %{?git:0.%{git}.}1
+Release: %{?git:0.%{git}.}2
 Source0: https://invent.kde.org/frameworks/kservice/-/archive/master/kservice-master.tar.bz2#/kservice-%{git}.tar.bz2
 Summary: KService allows to query information about installed applications and their associated file types
 URL: https://invent.kde.org/frameworks/kservice
@@ -71,10 +71,15 @@ KService allows to query information about installed applications and their asso
 %ninja_install -C build
 %find_lang %{name} --all-name --with-qt --with-html --with-man
 
-# We get this from distro-release-desktop
-rm %{buildroot}%{_sysconfdir}/xdg/menus/applications.menu
+# We get the non-branded file from distro-release-desktop; the
+# kde5 in the name of the new location is intentional (because a
+# symlink in distro-release points at it for now and kservice 5 and
+# 6 can't be installed at the same time anyway).
+mkdir -p %{buildroot}%{_sysconfdir}/xdg/kde5/menus
+mv %{buildroot}%{_sysconfdir}/xdg/menus/applications.menu %{buildroot}%{_sysconfdir}/xdg/kde5/menus/kde-applications.menu
 
 %files -f %{name}.lang
+%{_sysconfdir}/xdg/kde5/menus/kde-applications.menu
 %{_datadir}/qlogging-categories6/kservice.*
 %{_bindir}/kbuildsycoca6
 %{_mandir}/man8/kbuildsycoca6.8*
