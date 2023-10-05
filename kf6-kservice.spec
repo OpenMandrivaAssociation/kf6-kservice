@@ -1,6 +1,6 @@
 %define libname %mklibname KF6Service
 %define devname %mklibname KF6Service -d
-%define git 20230927
+%define git 20231005
 
 Name: kf6-kservice
 Version: 5.240.0
@@ -87,7 +87,6 @@ mv %{buildroot}%{_sysconfdir}/xdg/menus/applications.menu %{buildroot}%{_sysconf
 %files -n %{devname}
 %{_includedir}/KF6/KService
 %{_libdir}/cmake/KF6Service
-%{_qtdir}/mkspecs/modules/qt_KService.pri
 %{_qtdir}/doc/KF6Service.*
 
 %files -n %{libname}
