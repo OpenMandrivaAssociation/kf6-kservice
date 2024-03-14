@@ -6,7 +6,7 @@
 
 Name: kf6-kservice
 Version: 6.0.0
-Release: %{?git:0.%{git}.}1
+Release: %{?git:0.%{git}.}2
 %if 0%{?git:1}
 Source0: https://invent.kde.org/frameworks/kservice/-/archive/master/kservice-master.tar.bz2#/kservice-%{git}.tar.bz2
 %else
