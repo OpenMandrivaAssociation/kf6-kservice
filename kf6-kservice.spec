@@ -1,3 +1,4 @@
+%define major %(echo %{version} |cut -d. -f1-2)
 %define stable %([ "$(echo %{version} |cut -d. -f2)" -ge 80 -o "$(echo %{version} |cut -d. -f3)" -ge 80 ] && echo -n un; echo -n stable)
 
 %define libname %mklibname KF6Service
@@ -5,12 +6,12 @@
 #define git 20240217
 
 Name: kf6-kservice
-Version: 6.0.0
-Release: %{?git:0.%{git}.}2
+Version: 6.1.0
+Release: %{?git:0.%{git}.}1
 %if 0%{?git:1}
 Source0: https://invent.kde.org/frameworks/kservice/-/archive/master/kservice-master.tar.bz2#/kservice-%{git}.tar.bz2
 %else
-Source0: http://download.kde.org/%{stable}/frameworks/%{version}/kservice-%{version}.tar.xz
+Source0: http://download.kde.org/%{stable}/frameworks/%{major}/kservice-%{version}.tar.xz
 %endif
 Summary: KService allows to query information about installed applications and their associated file types
 URL: https://invent.kde.org/frameworks/kservice
