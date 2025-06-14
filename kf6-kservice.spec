@@ -6,7 +6,7 @@
 #define git 20240217
 
 Name: kf6-kservice
-Version: 6.14.0
+Version: 6.15.0
 Release: %{?git:0.%{git}.}1
 %if 0%{?git:1}
 Source0: https://invent.kde.org/frameworks/kservice/-/archive/master/kservice-master.tar.bz2#/kservice-%{git}.tar.bz2
@@ -87,7 +87,6 @@ KService allows to query information about installed applications and their asso
 %files -n %{devname}
 %{_includedir}/KF6/KService
 %{_libdir}/cmake/KF6Service
-%{_qtdir}/doc/KF6Service.*
 
 %files -n %{libname}
 %{_libdir}/libKF6Service.so*
